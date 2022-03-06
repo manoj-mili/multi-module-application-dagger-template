@@ -1,0 +1,55 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        minSdk 23
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation project(path: ':domain:notes')
+    add("implementation", "com.google.dagger:dagger:2.38.1")
+    add("kapt", "com.google.dagger:dagger-compiler:2.38.1")
+    def roomVersion = "2.4.2"
+    implementation("androidx.room:room-runtime:$roomVersion")
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$roomVersion")
+
+
+    add("implementation", "com.squareup.retrofit2:retrofit:2.9.0")
+    add("implementation", "com.squareup.retrofit2:adapter-rxjava3:2.9.0")
+    add("implementation", "com.squareup.okhttp3:okhttp:4.9.2")
+    add("implementation", "com.squareup.okhttp3:logging-interceptor:4.9.2")
+    // moshi json library
+    add("implementation", "com.squareup.moshi:moshi:1.9.2")
+    add("implementation", "com.squareup.retrofit2:converter-moshi:2.9.0")
+    add("kapt", "com.squareup.moshi:moshi-kotlin-codegen:1.9.2")
+}
