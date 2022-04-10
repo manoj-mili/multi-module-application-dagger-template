@@ -1,4 +1,4 @@
-# multi-mdoule-application-dagger-template
+# multi-module-application-dagger-template
 Android Multi-Module Code Template Using Dagger For DI, Room for caching and retrofit for network. It is feature and layering based separation
 
 Pros:
